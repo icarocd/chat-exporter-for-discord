@@ -1,0 +1,21 @@
+// Fetches attachments from the Discord CDN for the content script (avoids CORS blocks).
+const ALLOWED = ['cdn.discordapp.com', 'media.discordapp.net'];
+
+chrome.runtime.onMessage.addListener((msg, sender, send) => {
+  if (!msg || msg.type !== 'fetch') return;
+  (async () => {
+    try {
+      const u = new URL(msg.url);
+      if (u.protocol !== 'https:' || !ALLOWED.includes(u.hostname)) throw new Error('host not allowed');
+      const r = await fetch(u);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const buf = new Uint8Array(await r.arrayBuffer());
+      let s = '';
+      for (let i = 0; i < buf.length; i += 0x8000) s += String.fromCharCode.apply(null, buf.subarray(i, i + 0x8000));
+      send({ ok: true, b64: btoa(s) });
+    } catch (e) {
+      send({ ok: false, error: String(e && e.message || e) });
+    }
+  })();
+  return true;
+});
