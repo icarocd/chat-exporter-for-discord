@@ -10,7 +10,7 @@ Works in Chromium-based browsers (Chrome, Brave, Edge).
 - Open `chrome://extensions` (in Brave, `brave://extensions`)
 - Turn on "Developer mode"
 - Click "Load unpacked" and select the repository folder
-- Open or reload `https://discord.com`
+- Open `https://discord.com` (tabs already open get the button without a reload)
 
 ## Use
 
