@@ -19,3 +19,11 @@ chrome.runtime.onMessage.addListener((msg, sender, send) => {
   })();
   return true;
 });
+
+// On install or reload, add the button to Discord tabs that are already open (no page reload needed).
+chrome.runtime.onInstalled.addListener(async () => {
+  const tabs = await chrome.tabs.query({ url: 'https://discord.com/*' });
+  for (const t of tabs) {
+    chrome.scripting.executeScript({ target: { tabId: t.id }, files: ['content.js'] }).catch(() => {});
+  }
+});

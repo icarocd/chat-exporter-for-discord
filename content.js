@@ -14,7 +14,9 @@
   };
 
   // ---------- UI ----------
+  document.getElementById('dcx-box')?.remove(); // old button from a previous load of the extension
   const box = document.createElement('div');
+  box.id = 'dcx-box';
   box.style.cssText = 'position:fixed;right:16px;bottom:90px;z-index:99999;font:13px sans-serif;display:flex;flex-direction:column;align-items:flex-end;gap:6px';
   const menu = document.createElement('div');
   menu.style.cssText = 'display:none;flex-direction:column;gap:4px;background:#2b2d31;color:#dbdee1;padding:8px;border-radius:8px;box-shadow:0 4px 12px #0008';

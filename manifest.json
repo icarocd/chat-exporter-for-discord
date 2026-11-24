@@ -1,12 +1,14 @@
 {
   "manifest_version": 3,
   "name": "Chat Exporter for Discord",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Adds a button to export the open Discord conversation, with attachments",
   "background": {
     "service_worker": "background.js"
   },
+  "permissions": ["scripting"],
   "host_permissions": [
+    "https://discord.com/*",
     "https://cdn.discordapp.com/*",
     "https://media.discordapp.net/*"
   ],
