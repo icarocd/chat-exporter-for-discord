@@ -296,6 +296,7 @@
     } catch (e) {
       setStatus('Error: ' + (e.message || e));
     } finally {
+      if (maxScrolls > 0 && sc) sc.scrollTop = sc.scrollHeight; // back to the newest message
       running = false;
       mainBtn.textContent = '⇩ Export';
       setTimeout(() => setStatus(''), 8000);

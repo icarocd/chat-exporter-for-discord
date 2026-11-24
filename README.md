@@ -35,7 +35,7 @@ The `.zip` file goes to the browser download folder, named `discord_<conversatio
 
 - Reads only what Discord already shows on the page, using the session open in the browser
 - Does not use your token, does not call the Discord API and does not send data to any other place
-- Scrolls the conversation to load older messages, like a user would
+- Scrolls the conversation to load older messages, like a user would, and scrolls back to the newest message at the end
 - Downloads attachments only from `cdn.discordapp.com` and `media.discordapp.net`
 - Runs only on `https://discord.com/*`
 
